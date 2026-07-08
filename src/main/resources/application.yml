@@ -1,28 +1,34 @@
+server:
+  port: 9060
+
 spring:
   application:
-    name: devops-delivery-api
+    name: devops-core
   profiles:
     default: local
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/devops-core}
 
 logging:
   pattern:
     level: "%5p [correlationId:%X{correlationId:-}]"
 
-devops:
-  delivery-document:
-    space-key: ${CONFLUENCE_SPACE_KEY:FLA}
-    title-prefix: ${CONFLUENCE_TITLE_PREFIX:FLA}
-  deployment-configuration:
-  integrations:
-    bitbucket:
-      base-url: ${BITBUCKET_BASE_URL:http://localhost:7990}
-      username: ${BITBUCKET_USERNAME:}
-      password: ${BITBUCKET_PASSWORD:}
-    jira:
-      base-url: ${JIRA_BASE_URL:http://localhost:8081}
-      username: ${JIRA_USERNAME:}
-      password: ${JIRA_PASSWORD:}
-    confluence:
-      base-url: ${CONFLUENCE_BASE_URL:http://localhost:8090}
-      username: ${CONFLUENCE_USERNAME:}
-      password: ${CONFLUENCE_PASSWORD:}
+applications:
+  bitbucket:
+    base-url: ${BITBUCKET_BASE_URL:http://localhost:7990}
+    username: ${BITBUCKET_USERNAME:}
+    password: ${BITBUCKET_PASSWORD:}
+  jira:
+    base-url: ${JIRA_BASE_URL:http://localhost:8081}
+    username: ${JIRA_USERNAME:}
+    password: ${JIRA_PASSWORD:}
+  confluence:
+    base-url: ${CONFLUENCE_BASE_URL:http://localhost:8090}
+    username: ${CONFLUENCE_USERNAME:}
+    password: ${CONFLUENCE_PASSWORD:}
+  deploiement-app:
+    environnements:
+      rec: []
+      ppr: []
+      prod: []
